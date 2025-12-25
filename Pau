@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pàgina amb contrasenya i text</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+
+  .screen {
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 500px;
+  }
+
+  input[type="password"], input[type="text"] {
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+  }
+
+  p {
+    margin-top: 20px;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+
+<!-- Pantalla 1: contrasenya -->
+<div id="screen1" class="screen active" style="background-image: url('imatge1.jpg');">
+  <div class="box">
+    <h2>Introdueix la contrasenya</h2>
+    <input type="password" id="password" placeholder="Contrasenya">
+    <button onclick="checkPassword()">Envia</button>
+  </div>
+</div>
+
+<!-- Pantalla 2: text -->
+<div id="screen2" class="screen" style="background-image: url('imatge2.jpg');">
+  <div class="box">
+    <h2>Missatge per Laia</h2>
+    <p>
+      Súper bé, Laia! Espero que no t’hagis enfadat per haver obert aquest espill ni per haver tocat les coses de l’habitació. Però ara és moment de buscar el següent QR. En aquest hauràs de buscar alguns papers penjats per la teva habitació (igual algun horari antic et servirà d’ajuda).
+    </p>
+  </div>
+</div>
+
+<script>
+function checkPassword() {
+  const pw = document.getElementById('password').value;
+  if (pw === 'kintosampolla') {
+    document.getElementById('screen1').classList.remove('active');
+    document.getElementById('screen2').classList.add('active');
+  } else {
+    alert('Contrasenya incorrecta!');
+  }
+}
+</script>
+
+</body>
+</html>
